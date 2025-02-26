@@ -2,11 +2,11 @@
 #include "bank.h"
 
 double deposit(double balance, double amount) {
-    if (amount < 10.0) {
-        printf("Deposit failed: Amount too small! Minimum deposit is $10.00.\n");
+    if (amount < MIN_DEPOSIT) {
+        printf("Deposit failed: Amount too small! Minimum deposit is $%.2f.\n", MIN_DEPOSIT);
     } 
-    else if (amount > 5000.0) {
-        printf("Deposit failed: Amount too large! Maximum deposit is $5000.00.\n");
+    else if (amount > MAX_DEPOSIT) {
+        printf("Deposit failed: Amount too large! Maximum deposit is $%.2f.\n", MAX_DEPOSIT);
     } 
     else {
         balance += amount;
@@ -20,8 +20,8 @@ double withdraw(double balance, double amount, int *withdrawal_attempts) {
         printf("Withdrawal failed: Insufficient funds!\n");
         (*withdrawal_attempts)++;
     } 
-    else if (amount > 500.0) {
-        printf("Withdrawal failed: Exceeds max withdrawal limit of $500.00!\n");
+    else if (amount > MAX_WITHDRAWAL) {
+        printf("Withdrawal failed: Exceeds max withdrawal limit of $%.2f!\n", MAX_WITHDRAWAL);
         (*withdrawal_attempts)++;
     } 
     else {
